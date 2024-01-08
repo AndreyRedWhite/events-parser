@@ -12,6 +12,8 @@ app-dev.py
 .crt
 certs
 
+results/*
+
 trash
 # C extensions
 *.so
