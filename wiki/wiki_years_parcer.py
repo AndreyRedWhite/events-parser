@@ -11,13 +11,7 @@ import re
 from pprint import pprint
 
 from wiki.countries_parser.searcher import search_phrase_in_text
-
-# header-ы для подключения
-headers = {
-        "Accept": "*/*",
-        "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) "
-                      "Chrome/116.0.0.0 Safari/537.36 "
-}
+from wiki.requests_config import proxies, headers
 
 # словари с месяцами, для перевода месяцев из одного вида в другой
 mounths = {
@@ -104,7 +98,7 @@ def page_getter_before_2006(year: str, save: bool = False) -> str:
     """
     url = "https://ru.wikipedia.org/wiki/" + year + "_год"
     logging.info(f"getting a page for {year} year")
-    res = requests.get(url, headers=headers).text
+    res = requests.get(url, headers=headers, proxies=proxies).text
     # Сохраняет страницу для последующего парсинга
     if save:
         with open(f"wiki_{year}.html", "w") as f:
@@ -155,7 +149,7 @@ def page_getter_after_2006(mounth: str|int, year: str, save: bool = False) -> st
     date = f"{mounth}_" + f"{year}" + "_года"
     url = "https://ru.wikipedia.org/wiki/" + date
     logging.info(f"getting a page for {date}")
-    res = requests.get(url, headers=headers).text
+    res = requests.get(url, headers=headers, proxies=proxies).text
     # Сохраняет страницу для последующего парсинга
     if save:
         with open(f"wiki_{date}.html", "w") as f:

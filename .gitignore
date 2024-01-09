@@ -6,7 +6,6 @@ pycache/
 *$py.class
 .idea/
 
-app-dev.py
 .DS_Store
 .key
 .crt
