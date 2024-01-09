@@ -13,6 +13,7 @@ certs
 
 results/*
 
+.gitignore
 trash
 # C extensions
 *.so
