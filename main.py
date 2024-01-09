@@ -53,10 +53,10 @@ def user_input():
             date_list = filter_dates(start_date, finish_date, date_list)
             print("обработанные даты:")
             print(date_list, end="\n")
-            print("По вашему запросу найдены следующие совпадения:")
+            # print("По вашему запросу найдены следующие совпадения:")
             event_list = []
             for each_day in date_list:
-                print(f"Найдено совпадение в следующей дате: {each_day}")
+                # print(f"Найдено совпадение в следующей дате: {each_day}")
                 event_list.append(single_day(each_day))
 
             # добавим значение timedelta

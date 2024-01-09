@@ -32,6 +32,7 @@ def book_creater(data: dict, start_row: int = 2):
 
     # сохраняет файл
     wb.save(f'results/result_{data["date"]}.xlsx')
+    logging.info(f"файл result_{data['date']}.xlsx был успешно сохранен!")
 
 
 def book_creator_multiple_dates(event_list: list, search: str, date_interval: str, type_search: str,
@@ -60,7 +61,7 @@ def book_creator_multiple_dates(event_list: list, search: str, date_interval: st
 
     # добавим строку с поисковой датой
     create_date_row(data=event_list[0], row=row, sheet=sheet, start=True)
-    logging.info(f"working with: {event_list[0]['date']}")
+    # logging.info(f"working with: {event_list[0]['date']}")
 
     # добавим строку с заголовками
     create_headers(row, sheet=sheet)
@@ -72,7 +73,7 @@ def book_creator_multiple_dates(event_list: list, search: str, date_interval: st
     row = start_shift
 
     for event in event_list[1:]:
-        logging.info(f"working with: {event['date']}")
+        # logging.info(f"working with: {event['date']}")
         print(f"started row is {row}")
         # добавим строку с поисковой датой
         create_date_row(data=event, row=row, sheet=sheet)
@@ -103,6 +104,7 @@ def book_creator_multiple_dates(event_list: list, search: str, date_interval: st
     else:
         filename = f'results/result_{strict}_{search}_{date_interval}.xlsx'
     wb.save(filename)
+    logging.info(f"файл {filename} был успешно сохранен!")
 
 
 def sheet_filler(data: dict, row: int, sheet: Workbook.active):
@@ -324,7 +326,6 @@ def measure_json(data: dict) -> int:
                             len(data['Праздничные события (данные Wiki)']['профессиональные'])),
                   len(data['События за XX век']), len(data['События за XXI век']), len(data['астероиды']),
                   len(data['праздники (данные с calend.ru)']), len(data['события в этот день (данные Wiki)']))
-    logging.info(f"the lenght of {data['date']} is: {largest}")
     return largest
 
 
