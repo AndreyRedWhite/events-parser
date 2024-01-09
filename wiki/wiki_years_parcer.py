@@ -469,7 +469,7 @@ def page_iterator(start: str, finish: str, type_search: str, search_phrase: str,
     elif formated_start.year <= 2006 and formated_finish.year >= 2006:
         logging.info("executing case when start is 2006 and finish isn't")
         while formated_start <= formated_finish:
-            print(f"{formated_start=}, {formated_finish=}")
+            # print(f"{formated_start=}, {formated_finish=}")
             if formated_start.year < 2006:
                 page = page_getter_before_2006(str(formated_start.year))
                 event_dates = search_for_events_before_2006(page, search_phrase, type_search, country, cities)
